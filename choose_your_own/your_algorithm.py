@@ -27,18 +27,18 @@ plt.ylabel("grade")
 plt.show()
 #################################################################################
 
-
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
 
+from sklearn import svm
+from sklearn.metrics import accuracy_score
 
-
-
-
-
-
+clf = svm.SVC(kernel = "rbf", max_iter = 10000000, C = 100000000)
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
 
 try:
     prettyPicture(clf, features_test, labels_test)
+    print "Accuracy: " + str(accuracy_score(pred,labels_test))
 except NameError:
     pass
